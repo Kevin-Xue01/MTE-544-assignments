@@ -1,0 +1,41 @@
+\section{Differential-Drive Simulation [20 pts]}
+Create a simulation for the 2WD robot with \underline{Python} which takes as inputs the linear and angular velocities $\begin{bmatrix}
+    v,\omega
+\end{bmatrix}^\top$ (you can use the state space form). You should obtain the poses of the robot $\begin{bmatrix}
+    x(t),y(t),\theta(t)
+\end{bmatrix}^\top$ as outputs. 
+\begin{enumerate}[(a)]
+    \item Simulate and plot the trajectories obtained for the following velocities (use at least 30 seconds with a timestep of 0.1s):
+    \begin{enumerate}[i.]
+        \item Constant velocities
+        \begin{enumerate} [1.]
+            \item $\begin{bmatrix}
+    v,\omega
+\end{bmatrix}^\top=\begin{bmatrix}
+    1,0
+\end{bmatrix}^\top$
+\item $\begin{bmatrix}
+    v,\omega
+\end{bmatrix}^\top=\begin{bmatrix}
+    0,0.3
+\end{bmatrix}^\top$
+\item $\begin{bmatrix}
+    v,\omega
+\end{bmatrix}^\top=\begin{bmatrix}
+    1,0.3
+\end{bmatrix}^\top$
+        \end{enumerate}
+        \item Velocity profiles: $\begin{bmatrix}
+            v(t)\\\omega(t)
+        \end{bmatrix}=\begin{bmatrix}
+            1+0.1\cdot\sin(t)\\
+            0.2+0.5\cdot\cos(t)
+        \end{bmatrix}$
+    \end{enumerate}
+    Linear velocities are [m/s] and angular velocities are [rad/s]. For each case, plot the top view of the 2D trajectory ($x$ vs $y$), and then each variable against time, including orientation $\theta$. Discuss briefly your observations on the outcome (feel free to perform more tests). [15 pts]
+    \item 	Assuming the robot has dimensions $T$ (track) $= 0.2$ [m], and wheel radius $r = 0.1$ [m], what are the wheel speeds $u_l$,$u_r$ needed to achieve the constant velocities in (a).i? 
+    
+    Briefly comment on how you would need to change your implemented simulation if instead of linear and angular velocities, the input control parameters were wheel speeds.
+
+
+\end{enumerate}
