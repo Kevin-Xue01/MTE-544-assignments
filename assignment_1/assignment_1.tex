@@ -3,10 +3,8 @@
 \usepackage{amsmath}
 \usepackage{bm} % For bold math symbols
 
-\title{MTE}
-\author{Kevin Xue}
-\date{September 2024}
-
+\title{MTE 544 Assignment 1}
+\author{Kevin Xue, Student ID: 20814292}
 
 \begin{document}
 \maketitle
@@ -357,8 +355,6 @@ Given \(\bm{\mathbf{\overline{p}^2}} = \begin{bmatrix}
 \]
 \newpage
 \section{}
-(a)
-
 (b)
 \[\]
 Outlining the kinematic equations for a two-wheeled robot:
@@ -499,11 +495,18 @@ Using an initial state of \(x_0 = 0 [cm], \ y_0 = 0 [cm], \ \theta_0 = 0 [rad], 
 \[
 u_1 = u_2, \quad u_3 = 0
 \]
-2) The \(\bm{\mathbf{\dot{q}}}\) of a circular path with a diameter of 2 m (radius = 100 cm) is:
+2) The \(\bm{\mathbf{\dot{q}}}\) of a circular path with a diameter of 2 m = 200 cm is:
 \[
 \renewcommand{\arraystretch}{1.3}
 \bm{\mathbf{\dot{q}}} = \begin{bmatrix}
-    -100\omega \sin(\omega t) \\ 100\omega \cos(\omega t) \\ \omega
+    0 \\ \frac{d\pi}{T} \\ \frac{2\pi}{T}
 \end{bmatrix}
+\]
+where \(d = 200 \ cm, \quad T = total \ simulation \ time\)
+\[\]
+Using an initial state of \(x_0 = 0 [cm], \ y_0 = 0 [cm], \ \theta_0 = 0 [rad], \ l = 25 [cm], \ r = 10 [cm]\) and solving for \(\bm{\mathbf{u}}\)
+
+\[
+u_2 = u_3, \quad u_1 = -5u_2
 \]
 \end{document}
