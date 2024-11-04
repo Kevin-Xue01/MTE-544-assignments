@@ -1,0 +1,15 @@
+\section{RANSAC with Ellipse II (30)}
+In this exercise, you are tasked to implement RANSAC algorithm for determining the shape of an ellipse in Python. The implementation must match your explanation in the report in order to receive full credits.
+
+To test whether point $\mathbf{p}_i$ is an inlier, let the following inequality be the condition for inliers.
+\begin{equation*}
+    \left\|\sqrt{(\mathbf{p}_i-\mathbf{b})^\top\mathbf{Q}(\mathbf{p}_i-\mathbf{b})}-1\right\|\leq \varepsilon
+\end{equation*}
+where $\varepsilon$ is the tunable threshold.
+\begin{enumerate}[a.)]
+\item Based on the given template in Python, implement \textit{fit\textunderscore ellipse\textunderscore subset} that compute $\mathbf{Q}$ and $\mathbf{b}$ from a given set of points. (The number points is determined from 1.a). [8 pts]
+
+\item Based on the given template in Python, implement \textit{ransac\textunderscore ellipse} that determined the best $\mathbf{Q}$, $\mathbf{b}$, and the corresponding inliers based on the given dataset, number of iterations, and threshold. You must explain your implementation step-by-step [12 pts]
+ with the rationale in your report.
+\item Based on the given template in Python, use different number of dataset, number of iterations, and threshold value. Comment on the effect of these parameters. [10 pts]
+\end{enumerate}

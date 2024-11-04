@@ -1,0 +1,14 @@
+\section{ Bayesian Filter for Tracking Moo-Deng's Behavior II (20)}
+In this exercise, you are tasked to implement a state estimator for Moo-Deng's whereabouts along with a simple behavior simulator in Python . The implementation must match your explanation in the report in order to receive full credits.
+\begin{enumerate}[a)]
+    \item Based on the given code in Python, complete the function  \texttt{moodeng\textunderscore behavior\textunderscore update} that randomly returns the state of Moo-Deng based on the given current state and the transition matrix $\mathbf{A}$. 
+You must explain your implementation in this report. Comment in the report on how can you use statistics to verify your results ? [5 pts.]
+\item Based on the given code in Python, complete the function \texttt{sensor\textunderscore measurement}  that return the noisy measurement $\mathbf{y}_k$ based on the matrix $\mathbf{C}$ and given Moo-Deng's state. Note that the results should be either (1,0,0), (0,1,0), or (0,0,1). [5 pts.]
+\item Based on the designed Bayesian filter and the given code in Python, implement a state estimator and the rest of the simulation in  called \texttt{sim\textunderscore moodeng}. The estimator should :
+\begin{itemize}
+    \item estimate a sequence state of Moo-Deng's location $\hat{A}_k$
+    \item return a sequence belief (probability vector) of Moo-Deng's location $\mathbf{x}_k$
+\end{itemize} 
+given an initial belief $\mathbf{x}_0$ and a sequence of sensor measurement $\mathbf{y}_k$ [6 pts.]. 
+\end{enumerate}
+

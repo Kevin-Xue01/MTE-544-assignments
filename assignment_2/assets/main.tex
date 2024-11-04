@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[letterpaper, top=0.75in, left=0.75in, right=0.75in, bottom=0.89in]{geometry} % for custom margins
+\usepackage{fancyhdr} % for headers
+\usepackage{graphicx} % for including images
+\usepackage{caption} % for captions
+\usepackage[shortlabels]{enumitem}
+\usepackage{float}
+% Define headers and footers
+\DeclareMathOperator*{\argmin}{argmin}
+\pagestyle{fancy}
+\fancyhf{}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% Left header
+\fancyhead[L]{MTE544 Fall 2024}
+
+% Center header
+\fancyhead[C]{Assignment\#2}
+
+% Right header
+\fancyhead[R]{Due Nov.\ 8\textsuperscript{th} 11:59 \textsc{PM}}
+\fancyfoot[C]{\thepage}
+\begin{document}
+
+\begin{center}
+     \textbf{MTE54 \ Fall \ 2024}\\
+     Assignment 2
+\end{center}
+
+\input{guideline}
+
+\newpage
+\underline{Please use computer-typed equations and text for the entire assignment, avoid hand-writing when possible.}
+\input{problem_1}
+\input{problem_2}
+\input{problem_3}
+\input{problem_4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Submission Guideline}
+
+Include details of all analytical computations and assumptions made (if any) and required plots in your assignment report. There is no page limit. Comment your code appropriately.
+Submit a single PDF for the report and a single zip file with all the codes on Dropbox by Nov 8th, 11:59PM. Late penalty applies as per syllabus if not properly justified. Overlaps with other assignments and/or course duties are not accepted as justifications.
+
+
+\end{document}
