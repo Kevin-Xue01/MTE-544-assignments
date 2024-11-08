@@ -1,5 +1,5 @@
 """
-Student Name & Last Name: 
+Student Name & Last Name: Kevin Xue
 Origianl Author : Pi Thanacha Choopojcharoen
 You must change the name of your file to MTE_544_AS2_Q4_(your full name).py
 Do not use jupyter notebook.
@@ -21,20 +21,19 @@ def decode_measurement(measurements):
 def moodeng_behavior_update(state, A):
     # Given the current state, and the transition matrix A, 
     # randomly return the next state of Moo-Deng based on A
-    ##### ADD your code here : #####
-    ...
-    ##### END #####
+    next_state = A @ state
     return next_state
+
 def sensor_measurement(state, C):
     # Given a state, and the matrix C, 
     # randomly return the encoded measurement based on C
     # Note that : 
-    # F -> np.array([1,0,0])
-    # R -> np.array([0,1,0])
-    # P -> np.array([0,0,1])
-    ##### ADD your code here : #####
-    ...
-    ##### END #####
+    F = np.array([1,0,0])
+    R = np.array([0,1,0])
+    P = np.array([0,0,1])
+    choices = [F, R, P]
+    probabilities = C @ state
+    measurement = np.random.choice(choices, p=probabilities)
     return measurement
 
 def sim_moodeng(initial_state=1,iteration = 20):
@@ -44,8 +43,8 @@ def sim_moodeng(initial_state=1,iteration = 20):
     belief = np.array([1/3, 1/3, 1/3])  # Initial belief for the Bayesian filter
     
     ##### ADD your code here : #####
-    A = ...
-    C = ...
+    A = np.array([[0.6, 0.4, 0.0], [0.2, 0.4, 0.4], [0.2, 0.1, 0.7]])
+    C = np.array([[0.8, 0.2, 0.05], [0.1, 0.7, 0.1], [0.1, 0.1, 0.85]])
     ##### END #####
 
     states = []

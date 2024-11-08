@@ -12,12 +12,12 @@ pip install numpy matplotlib pandas scipy
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.linalg
+import random
 import pandas as pd
 def plot_ellipse(Q, b, ax):
-    lambda_var = 9.80665
-    S = scipy.linalg.sqrtm(np.linalg.inv(Q))/lambda_var
+    S = scipy.linalg.sqrtm(np.linalg.inv(Q))
     
-    eigvals, eigvecs = np.linalg.eigh(lambda_var*S)
+    eigvals, eigvecs = np.linalg.eigh(S)
     aa, bb = eigvals
 
     theta = np.linspace(0, 2 * np.pi, 100)
@@ -50,77 +50,43 @@ def is_positive_definite(matrix):
         return False
 
 def fit_ellipse_subset(points):
-    # Extract x and y coordinates
-    x = points[:, 0]
-    y = points[:, 1]
+    # Given some number of points (you have to determined this), 
+    # construct an ellipse that fits through those points.
     
-    # Formulate the design matrix for the least squares problem
-    D = np.column_stack([x**2, x*y, y**2, x, y, np.ones_like(x)])
-    
-    # Solve the normal equation using SVD for least squares
-    _, _, V = np.linalg.svd(D)
-    coeffs = V[-1, :]
-    
-    # Separate the quadratic form matrix Q and vector b
-    Q = np.array([[coeffs[0], coeffs[1] / 2],
-                  [coeffs[1] / 2, coeffs[2]]])
-    b = np.array([coeffs[3], coeffs[4]])
-    c = coeffs[5]
-    
-    return Q, b, c
+
+    ##### ADD your code here : #####
+    ...
+    ##### END #####
+    return Q, b
 
 def ransac_ellipse(data, num_iterations=1000, threshold=0.2):
-    best_inliers = []
-    best_Q = None
-    best_b = None
+    inliers = []
+    # Given the data sets, perform RANSAC to find the best Q and b as well as the inliers
+    # Hint: You should use fit_ellipse_subset 
+    # Hint: in some case, the Q matrix might not be positive defintie, use is_positive_definite to check.
 
-    for _ in range(num_iterations):
-        # Randomly sample a subset of points (e.g., minimum number needed is 5 for an ellipse)
-        subset = data[np.random.choice(data.shape[0], 5, replace=False)]
-        print(subset)
-        # Fit an ellipse to this subset
-        Q, b, c = fit_ellipse_subset(subset)
-        
-        # Check if Q is positive definite (ellipse constraint)
-        if not is_positive_definite(Q):
-            continue  # Skip this iteration if the matrix is not positive definite
-        
-        # Count inliers
-        inliers = []
-        for point in data:
-            x, y = point
-            # Ellipse equation: [x y]Q[x y]^T + b[x y] + c ≈ 0
-            distance = abs(np.array([x, y]) @ Q @ np.array([x, y]) + b @ np.array([x, y]) + c)
-            if distance < threshold:
-                inliers.append(point)
-        
-        # Update if this model has the most inliers
-        if len(inliers) > len(best_inliers):
-            best_inliers = inliers
-            best_Q = Q
-            best_b = b
+    ##### ADD your code here : #####
 
-    return best_Q, best_b, np.array(best_inliers)
+    # detect if the ellipse is too eccentric*
+    [e_vals,_] = np.linalg.eigh(scipy.linalg.sqrtm(np.linalg.inv(Q)))
+    if e_vals[0]>20 or e_vals[1]>20:
+        continue
+    ...
+    ##### END #####
+    return Q,b,inliers
 
 if __name__ == "__main__":
     # Load the data from CSV file and select N random points
     N = 500
     all_data = pd.read_csv('data_x_y.csv').to_numpy()
     dataset = all_data[np.random.choice(all_data.shape[0], N, replace=False), :]
-
     # dataset is p
-    dataset = np.array([
-        [2.92, -6.01],
-        [3.40, -7.20],
-        [4.99, -7.84],
-        [5.48, -7.04],
-        [4.20, -5.91]
-    ])
-
+    
     Q, b_est, inliers = ransac_ellipse(dataset)
+    
     # Plot the raw measurements and fitted ellipse
     fig, ax1 = plt.subplots(1, 1, figsize=(16, 8))
-    visualize_data(dataset, ax1, inliers, threshold=0.1)
+    visualize_data(dataset, ax1, inliers, threshold=0.5)
     plot_ellipse(Q, b_est, ax1)
     ax1.set_title("RANSAC Ellipse Fitting with Threshold Visualization")
 
