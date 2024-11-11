@@ -1,0 +1,36 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[letterpaper, top=0.75in, left=0.75in, right=0.75in, bottom=0.89in]{geometry} % for custom margins
+\usepackage{fancyhdr} % for headers
+\usepackage{graphicx} % for including images
+\usepackage{caption} % for captions
+\usepackage[shortlabels]{enumitem}
+\usepackage{float}
+% Define headers and footers
+\DeclareMathOperator*{\argmin}{argmin}
+\pagestyle{fancy}
+\fancyhf{}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{bm}
+% Left header
+\fancyhead[L]{MTE544 Fall 2024}
+
+% Center header
+\fancyhead[C]{Assignment\#2}
+
+% Right header
+\fancyhead[R]{Due Nov.\ 8\textsuperscript{th} 11:59 \textsc{PM}}
+\fancyfoot[C]{\thepage}
+\begin{document}
+
+\input{problem_1}
+\newpage
+\input{problem_2}
+\newpage
+\input{problem_3}
+\newpage
+\input{problem_4}
+
+\end{document}
